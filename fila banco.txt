@@ -1,0 +1,45 @@
+DECLARAÇÃO:
+	fila[10]:TEXTO;
+	i:INTEIRO;
+	j:INTEIRO;
+	pref:INTEIRO;
+	
+INICIO
+
+	fila[0] <- "comum";
+	fila[1] <- "comum";
+	fila[2] <- "comum";
+	fila[3] <- "pref";
+	fila[4] <- "comum";
+	fila[5] <- "pref";
+	fila[6] <- "pref";
+	
+	pref <- 0;
+	
+	PARA i <- 0 DE ATÉ 9 PASSO 1 FAÇA
+		SE (fila[i] = "pref") ENTÃO
+		
+			    mover todas as pessoas da fila uma posição anterior
+			    mas fazer isso a partir do penultimo
+			    PARA j <- i DE ATÉ pref PASSO -1 FAÇA
+			
+				    se todos as posições a partir do [pref] forem deslocadas
+				    entao agora sim o "pref" fica em primeiro
+				    SE (j = prio) ENTÃO
+				
+					   mesmo a primeira posição podendo estar vazia
+					   ao invés de colocar direto em fila[0]
+					   eu coloco os "prefs" na ordem que eles ja estavam entre si
+					   (o segundo "pref" fica atrás do primeiro "pref")
+					   fila[j] = "pref";
+				SENÃO
+					   isso desloca todos para a direita
+					   fila[j] <- fila[j - 1];
+				FIM-SE
+			    FIM-PARA
+			
+			   quantidade de pessoas prioritarias na fila
+			   pref <- pref + 1;
+		SENÃO
+		FIM-SE
+	    FIM-PARA
